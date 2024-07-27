@@ -7,9 +7,52 @@ import {ALL_PRODUCT_FAIL,
     CV_REQUEST,
     CV_SUCCESS,
     CV_FAIL,
+    ADD_PRODUCT_REQUEST,
+    ADD_PRODUCT_FAIL,
+    ADD_PRODUCT_SUCCESS,
     CLEAR_ERROS
 } 
 from "../constants/productConstant"
+
+
+//adding a new product
+
+
+export const addProductReducers=(state={products:{}},action)=>{
+
+    switch (action.type) {
+        case ADD_PRODUCT_REQUEST:
+            return{
+                ...state,
+                loading:true,
+            }
+
+            case ADD_PRODUCT_SUCCESS:
+                return{
+                    ...state,
+                    loading:false,
+                    success:true,
+                    products:action.payload.products
+                }
+                case ADD_PRODUCT_FAIL:
+                    return{
+                        ...state,
+                        loading:false,
+                        success:false,
+                        error:action.payload
+                    }
+                    case CLEAR_ERROS:
+           
+                    return{
+                        ...state,
+                        error:null
+                    }
+                           
+            default:
+                return state
+        }
+    }
+
 
 
 export const productReducers=(state={products:[]},action)=>{

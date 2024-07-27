@@ -57,7 +57,7 @@ const Sidebars = () =>{
     </SubMenu>
    
     <MenuItem component={<Link to="/admin/products" />} > All Products</MenuItem>
-    <MenuItem component={<Link to="/e-commerce" />} > E-commerce</MenuItem>
+    <MenuItem component={<Link to="/admin/add/product" />} > Add new product </MenuItem>
        
     <MenuItem component={<Link to="/calendar" />} > Calendar</MenuItem>
     <MenuItem component={<Link to="/e-commerce" />} > E-commerce</MenuItem>

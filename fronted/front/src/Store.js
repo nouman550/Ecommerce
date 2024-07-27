@@ -1,8 +1,9 @@
 import {createStore,combineReducers,applyMiddleware} from "redux";
 import thunk from "redux-thunk";
 import {composeWithDevTools} from "redux-devtools-extension";
-import { productDetailsReducers, productReducers,newCvReducers } from "./reducers/productReducers";
+import { productDetailsReducers, productReducers,newCvReducers, addProductReducers } from "./reducers/productReducers";
 import { newUserReducers, userReducers,updatePasswordReducers,adminUserReducers, deleteUserByAdmin, userDetailsReducers} from "./reducers/userReducers";
+
 
 const reducer=combineReducers({
 products:productReducers,
@@ -13,8 +14,8 @@ updatePassword:updatePasswordReducers,
 adminUsers:adminUserReducers,
 cvReducer:newCvReducers,
 deleteUser:deleteUserByAdmin,
-userDetails: userDetailsReducers
-
+userDetails: userDetailsReducers,
+newProduct:addProductReducers
 });
 
 let initialState={}

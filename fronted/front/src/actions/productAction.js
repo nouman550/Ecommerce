@@ -11,6 +11,9 @@ import {ALL_PRODUCT_FAIL,
     DELETE_PRODUCT_FAIL,
     DELETE_PRODUCT_REQUEST,
     DELETE_PRODUCT_SUCCESS,
+    ADD_PRODUCT_FAIL,
+    ADD_PRODUCT_REQUEST,
+    ADD_PRODUCT_SUCCESS,
     CLEAR_ERROS
 } 
 from "../constants/productConstant";
@@ -139,3 +142,30 @@ export const submitCv=(name,email,description,cgpa,experience,university,mobile,
 
 //it will clear errors 
 
+  //add A PRODUCT
+
+  export const addNewProduct=(name,description,price,category)=>async (dispatch)=>{
+    
+    try {
+
+        dispatch({
+            type:ADD_PRODUCT_REQUEST
+        })
+
+        const config={headers:{"Content-Type":"application/json"}}
+       const {data}=await axios.post("/api/v1/admin/products/new",{name,description,price,category},config)
+        
+     
+
+        dispatch({
+            type:ADD_PRODUCT_SUCCESS,
+            payload:data
+        })
+        
+    } catch (error) {
+        dispatch({
+            type:ADD_PRODUCT_FAIL,
+            payload:error.response.data.message
+        })
+    }
+}
